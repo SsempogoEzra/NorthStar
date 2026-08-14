@@ -60,7 +60,7 @@ To ensure full transparency and auditability, here is the breakdown of component
 
 | Team Member Name | Role / Assigned Page | GitHub Username | Key Contributions |
 | :--- | :--- | :--- | :--- |
-| **Ezra Ssempogo** | Customer Dashboard (`dashboard.html`) | `@` | Built dashboard shell, quick action grid, recent orders list, and responsive layouts. |
+| **Ezra Ssempogo** | Customer Dashboard (`dashboard.html`) | `pogoezra@gmail.com` | Built dashboard shell, quick action grid, recent orders list, and responsive layouts. |
 | *[Anab]* | Login Page (`login.html`) | `@` | [Briefly describe task e.g., Login UI form structure and styling] |
 | *[Sharon]* | Order Status Page (`orders.html`) | `@` | [Briefly describe task e.g., Progress tracker and shipping details view] |
 | *[John]* | Returns & Refunds Page (`returns.html`) | `@` | [Briefly describe task e.g., Return eligibility cards and refund state] |
