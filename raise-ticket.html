@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File a Ticket | North Star Retail Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #1d2331;
+      color: #FFFFFF;
+      min-height: 100vh;
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      max-width: 720px;
+    }
+
+    .page-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0D1321;
+      margin-bottom: 16px;
+      padding-left: 4px;
+    }
+
+    .card {
+      background-color: #0D1321;
+      border-radius: 12px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .back-button {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 150ms ease;
+    }
+
+    .back-button:hover {
+      opacity: 0.75;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: #A0AAB4;
+      margin-bottom: 24px;
+      padding-left: 34px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #A0AAB4;
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #FFFFFF;
+      background-color: #1F2933;
+      border: 1px solid #2A303E;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+    }
+
+    .form-control::placeholder {
+      color: #A0AAB4;
+      opacity: 1;
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23A0AAB4' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    select.form-control:invalid {
+      color: #A0AAB4;
+    }
+
+    select.form-control option {
+      background-color: #1F2933;
+      color: #FFFFFF;
+    }
+
+    textarea.form-control {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-control:focus {
+      border-color: #2449A2;
+      box-shadow: 0 0 0 2px rgba(36, 73, 162, 0.25);
+    }
+
+    .error-message {
+      display: none;
+      color: #F87171;
+      font-size: 12px;
+      margin-top: 6px;
+      padding-left: 4px;
+    }
+
+    .form-group.has-error .form-control {
+      border-color: #F87171;
+    }
+
+    .form-group.has-error .error-message {
+      display: block;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      color: #FFFFFF;
+      background-color: #2449A2;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background-color 150ms ease, transform 150ms ease;
+    }
+
+    .submit-button:hover {
+      background-color: #2d56b5;
+    }
+
+    .submit-button:active {
+      transform: translateY(1px);
+    }
+
+    .submit-button:disabled {
+      background-color: #2449A2;
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .success-block {
+      display: none;
+      margin-top: 20px;
+      padding: 16px;
+      background-color: #14202e;
+      border: 1px solid #2A303E;
+      border-radius: 8px;
+      text-align: center;
+      animation: fadeIn 200ms ease-out;
+    }
+
+    .success-block.visible {
+      display: block;
+    }
+
+    .success-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .ticket-number {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFFFFF;
+      background-color: #1F2933;
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      margin: 6px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .success-note {
+      font-size: 13px;
+      color: #A0AAB4;
+      margin-top: 6px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 16px 12px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .card-title {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    
+
+    <div class="card">
+      <div class="card-header">
+        <button class="back-button" type="button" aria-label="Go back">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5"></path>
+            <path d="M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <h2 class="card-title">File a Ticket</h2>
+      </div>
+
+      <p class="card-subtitle">Tell us about your issue.</p>
+
+      <form id="ticketForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="category">Category</label>
+          <select id="category" name="category" class="form-control" required>
+            <option value="" disabled selected>Select a category</option>
+            <option value="Order Issue">Order Issue</option>
+            <option value="Delivery Issue">Delivery Issue</option>
+            <option value="Return Request">Return Request</option>
+            <option value="Refund Issue">Refund Issue</option>
+            <option value="Payment Issue">Payment Issue</option>
+            <option value="Product Issue">Product Issue</option>
+            <option value="Account Issue">Account Issue</option>
+            <option value="Other">Other</option>
+          </select>
+          <span class="error-message">Please select a category.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" class="form-control" placeholder="Brief summary of your issue" required>
+          <span class="error-message">Please enter a subject.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="description">Description</label>
+          <textarea id="description" name="description" class="form-control" placeholder="Explain your issue in detail." required></textarea>
+          <span class="error-message">Please enter a description.</span>
+        </div>
+
+        <button type="submit" class="submit-button">Submit Ticket</button>
+      </form>
+
+      <div id="successBlock" class="success-block">
+        <div class="success-title">Your ticket has been submitted successfully.</div>
+        <div id="ticketNumber" class="ticket-number"></div>
+        <div class="success-note">Our support team will review your request.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const form = document.getElementById('ticketForm');
+      const category = document.getElementById('category');
+      const subject = document.getElementById('subject');
+      const description = document.getElementById('description');
+      const submitButton = form.querySelector('.submit-button');
+      const successBlock = document.getElementById('successBlock');
+      const ticketNumberEl = document.getElementById('ticketNumber');
+
+      const fields = [
+        { el: category, name: 'category' },
+        { el: subject, name: 'subject' },
+        { el: description, name: 'description' }
+      ];
+
+      function clearErrors() {
+        fields.forEach(function (field) {
+          field.el.parentElement.classList.remove('has-error');
+        });
+      }
+
+      function validate() {
+        let isValid = true;
+        clearErrors();
+
+        if (!category.value.trim()) {
+          category.parentElement.classList.add('has-error');
+          isValid = false;
+        }
+
+        if (!subject.value.trim()) {
+          subject.parentElement.classList.add('has-error');
+          isValid = false;
+        }
+
+        if (!description.value.trim()) {
+          description.parentElement.classList.add('has-error');
+          isValid = false;
+        }
+
+        return isValid;
+      }
+
+      function generateTicketNumber() {
+        let counter = parseInt(localStorage.getItem('northStarTicketCounter'), 10);
+        if (isNaN(counter)) {
+          counter = 1000;
+        }
+        counter += 1;
+        localStorage.setItem('northStarTicketCounter', counter.toString());
+        return 'TKT-' + counter;
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        successBlock.classList.remove('visible');
+
+        if (!validate()) {
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        const ticketNumber = generateTicketNumber();
+        const ticketData = {
+          ticketNumber: ticketNumber,
+          category: category.value.trim(),
+          subject: subject.value.trim(),
+          description: description.value.trim(),
+          submittedAt: new Date().toISOString()
+        };
+
+        // Store temporarily in localStorage as a demo submission only
+        localStorage.setItem('northStarLastTicket', JSON.stringify(ticketData));
+
+        window.setTimeout(function () {
+          ticketNumberEl.textContent = ticketNumber;
+          successBlock.classList.add('visible');
+          form.reset();
+          submitButton.disabled = false;
+          submitButton.textContent = 'Submit Ticket';
+        }, 600);
+      });
+
+      fields.forEach(function (field) {
+        field.el.addEventListener('input', function () {
+          if (field.el.parentElement.classList.contains('has-error')) {
+            field.el.parentElement.classList.remove('has-error');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,122 +1,75 @@
-# Northstar Login Hub
+# 🌟 North Star Retail Co. — Support Deflection MVP
 
-# Prompt: Northstar Retail Co. — Login Page (HTML/CSS/JS)
+> **Group 84** | Power Learn Project — The Northstar Sprint  
+> *A 1-Week Industry Working Simulation*
 
-Build a single-page login experience for the **Northstar Retail Support Deflection MVP** using plain HTML, CSS, and vanilla JavaScript (no frameworks, no build tools). It must be a self-contained file (or 3 linked files: index.html, styles.css, script.js) that runs directly in a browser.
+---
 
-## 1. Logo Splash (before login)
+## 📌 Project Problem & Objective
 
-- On page load, show a full-screen splash/intro overlay on the dark background (`#0B0F17`) displaying the Northstar Retail Co. logo (navy background, gold "N/S" monogram with compass star, "NORTHSTAR RETAIL CO." wordmark).
+**Northstar Retail Co.** is a mid-size e-commerce company experiencing high support ticket volumes. Their support team is drowning in repetitive customer inquiries across three main categories:
+1. **Order status** (*"Where is my order?"* / *"Has this shipped yet?"*)
+2. **Returns & refunds** (*"How do I return this?"* / *"When will I get my refund?"*)[cite: 1]
+3. **Stock availability** (*"Is this back in stock?"*)[cite: 1]
 
-- Logo fades/scales in, holds for ~1.5–2 seconds, then transitions (fade or slide) into the login card.
+### 🎯 What Was Asked For
+Our pod was hired for **1 week** to build a functional **Support Deflection MVP** that automates/deflects at least **2 of these 3 ticket categories** to relieve manual support handling[cite: 1].
 
-- Use a CSS keyframe animation (opacity + slight scale) — no external animation libraries.
+Alongside the prototype, we are delivering:
+* A working, demoable end-to-end prototype[cite: 1].
+* A 1-page **Go-Live Readiness Note** detailing what works, known edge cases, and handover instructions[cite: 1].
+* A traceable **Commit/Edit Audit Trail** proving genuine team collaboration[cite: 1].
 
-- Include a "Skip" tap/click-anywhere option so it's not annoying on repeat visits.
+---
 
-## 2. Login Card
+## 💡 Why We Chose This Solution (Customer Self-Service Dashboard)
 
-- Centered card, `max-width: 400px`, background `#161C27` (Surface Dark), rounded corners (~12px), subtle shadow.
+After analyzing the brief, Group 84 decided to build a **Customer Self-Service Dashboard**[cite: 2]. 
 
-- Contents, top to bottom:
+* **Practical Scope:** Fits comfortably within the tight 1-week sprint timeline without introducing unnecessary backend complexity[cite: 2].
+* **Skill Alignment:** Allows group members with web development skills to directly contribute while creating clear, parallel tasks for everyone[cite: 2].
+* **User-Centric Deflection:** By placing order tracking and return options directly in front of the customer upon login, we deflect the majority of repetitive inquiries before a support ticket is ever opened[cite: 2].
 
-  1. Small Northstar logo/wordmark at top of card
+---
 
-  2. "Welcome Back" heading (Text Primary `#F9FAFB`, bold/semibold)
+## 🛠️ Tech Stack Selection
 
-  3. Subtitle: "Log in to track orders, manage returns, and get support." (Text Muted `#9CA3AF`)
+To keep the application fast, lightweight, and maintainable, we selected standard web technologies[cite: 2]:
 
-  4. **Email field** — label + input, background `#1F2633`, border same tone, text `#F9FAFB`, placeholder in muted gray
+* **HTML5:** Semantic page structures and dynamic form layouts[cite: 2].
+* **CSS3:** Custom responsive styling utilizing a dark-mode theme (`#0B0F17` canvas, `#161C27` cards) optimized for both desktop and mobile screens[cite: 2].
+* **Native JavaScript (ES6+):** Light interactions, multi-page link handling, and client-side logic[cite: 2].
 
-  5. **Password field** — same styling, with a show/hide password toggle (eye icon, Lucide or FontAwesome)
+---
 
-  6. "Forgot password?" link, right-aligned under password field, Primary Accent `#2563EB`
+## 🧩 Parts of the MVP
 
-  7. Full-width primary CTA button: "Log In" — background `#2563EB`, hover state slightly darker/lighter, disabled state while validating
+Our application consists of a modular multi-page flow[cite: 2]:
 
-  8. Divider with "or" (optional, only if adding social buttons — otherwise skip)
+1. **🔑 Login Page (`login.html`):** The customer entry point designed for fast authentication[cite: 2].
+2. **🏠 Customer Dashboard (`dashboard.html`):** The central overview providing high-level order statuses, quick-action navigation cards, and recent order history[cite: 2].
+3. **📦 Order Status Page (`orders.html`):** Resolves *"Where is my order?"* with interactive delivery progress trackers, ETAs, and carrier details[cite: 2].
+4. **🔄 Returns & Refunds Page (`returns.html`):** Resolves *"How do I return this?"* by displaying item return eligibility, return status, and refund trackers[cite: 2].
+5. **🎫 File a Ticket Page (`ticket.html`):** A fallback support form for complex issues that cannot be self-resolved[cite: 2].
 
-  9. "Don't have an account? **Sign Up**" link at the bottom — clicking it toggles/reveals a **Sign Up form** (same card, swap fields: Name, Email, Password, Confirm Password, Create Account button) without navigating to a new page — use a smooth toggle animation between the two states
+---
 
-  10. Small footer text: "© 2026 Northstar Retail Co." in muted gray
+## 👥 Group 84 Team Contributions & Module Breakdown
 
-## 3. Functionality Requirements
+To ensure full transparency and auditability, here is the breakdown of components assigned across Group 84 members[cite: 1, 2]:
 
-- **Client-side validation**: required fields, valid email format (regex), password minimum length (8 chars), confirm-password match on sign-up.
+| Team Member Name | Role / Assigned Page | GitHub Username | Key Contributions |
+| :--- | :--- | :--- | :--- |
+| **Ezra Ssempogo** | Customer Dashboard (`dashboard.html`) | `pogoezra@gmail.com` | Built dashboard shell, quick action grid, recent orders list, and responsive layouts. |
+| *[Anab]* | Login Page (`login.html`) | `@` | [Briefly describe task e.g., Login UI form structure and styling] |
+| *[Sharon]* | Order Status Page (`orders.html`) | `@` | [Briefly describe task e.g., Progress tracker and shipping details view] |
+| *[John]* | Returns & Refunds Page (`returns.html`) | `@` | [Briefly describe task e.g., Return eligibility cards and refund state] |
+| *[Jackline]* | File a Ticket Page (`ticket.html`) | `@` | [Briefly describe task e.g., Ticket submission form and category selection] |
 
-- **Inline error messages** under each field (red-ish tone that still fits the dark palette, e.g. `#F87171`), shown on blur or submit attempt.
+---
 
-- **Success state**: on valid submit, simulate authentication (no real backend needed) — show a loading spinner on the button for ~1s, then either redirect to `dashboard.html` (placeholder link) or show a success toast/message.
+## 📜 Commit & Collaboration Guidelines
 
-- **Show/hide password** toggle must actually switch input type between `password` and `text`.
-
-- **Sign up / Log in toggle** must be fully working with JS (no page reload), preserving the same card container.
-
-- Store nothing sensitive — this is a front-end mock; use `localStorage` only if needed to simulate a "logged in" state for the MVP demo, and clearly comment that in the code.
-
-- Fully keyboard-accessible (tab order, Enter submits, focus states visible with a subtle blue outline).
-
-## 4. Styling — Use These Exact Design Tokens
-
-```css
-
-:root {
-
-  --bg-dark: #0B0F17;
-
-  --surface-dark: #161C27;
-
-  --border-dark: #1F2633;
-
-  --primary-blue: #2563EB;
-
-  --success-green: #16A34A;
-
-  --error-red: #F87171;
-
-  --text-main: #F9FAFB;
-
-  --text-muted: #9CA3AF;
-
-  --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-}
-
-```
-
-- Font: Inter (load via Google Fonts CDN or system fallback stack above).
-
-- Headings: 600–700 weight. Body/buttons: 400–500 weight. Labels/metadata: 400 weight, 12–14px.
-
-- Icons: Lucide Icons or FontAwesome 6 Free via CDN (use for email, lock, eye/eye-off icons).
-
-## 5. Responsive Behavior
-
-- Desktop-first, but must degrade gracefully below 768px: card goes full-width with side padding (~16–24px), splash logo scales down proportionally.
-
-## 6. Deliverable
-
-Output complete, working code (HTML/CSS/JS) with clear comments marking where a real backend/API call would eventually replace the mock authentication logic — so the next teammate can wire it up to the actual auth system without guessing.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://northstar-auth-flow.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/cced6551-89bd-4d00-b093-d504ad3233fd).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+All commits follow the required project convention[cite: 1]:
+```bash
+<type>: <what changed> - <why it matters>
