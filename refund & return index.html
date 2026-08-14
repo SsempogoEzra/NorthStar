@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Returns & Refunds</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#0b1220;
+    color:#fff;
+}
+
+.container{
+    max-width:430px;
+    margin:auto;
+    min-height:100vh;
+    padding:20px;
+    padding-bottom:90px;
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.back-btn{
+    font-size:24px;
+    cursor:pointer;
+}
+
+.page-title{
+    font-size:28px;
+    font-weight:700;
+}
+
+.card{
+    background:#141c2e;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.order-id{
+    font-size:24px;
+    font-weight:700;
+}
+
+.delivery-date{
+    margin-top:8px;
+    color:#a7b0c0;
+    font-size:15px;
+}
+
+.return-badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:8px 14px;
+    border-radius:8px;
+    background:#114d29;
+    color:#57ff95;
+    font-weight:600;
+    font-size:14px;
+}
+
+.menu{
+    margin-top:25px;
+}
+
+.menu-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.menu-item:last-child{
+    border-bottom:none;
+}
+
+.menu-left h3{
+    font-size:18px;
+    font-weight:600;
+}
+
+.menu-left p{
+    margin-top:4px;
+    color:#9da6b5;
+    font-size:14px;
+}
+
+.arrow{
+    font-size:22px;
+    color:#8d97a7;
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#101827;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-around;
+    padding:12px 0;
+}
+
+.nav-item{
+    text-align:center;
+    font-size:13px;
+    color:#9ca3af;
+}
+
+.nav-item.active{
+    color:#4f7cff;
+    font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <span class="back-btn">←</span>
+        <h1 class="page-title">Returns & Refunds</h1>
+    </div>
+
+    <div class="card">
+
+        <div class="order-id">Order #NS12345</div>
+
+        <!-- Dynamic Date -->
+        <div class="delivery-date" id="deliveryDate"></div>
+
+        <div class="return-badge">
+            Eligible for Return
+        </div>
+
+        <div class="menu">
+
+            <div class="menu-item">
+                <div class="menu-left">
+                    <h3>Request a Return</h3>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-left">
+                    <h3>Return Status</h3>
+                    <p>No active return</p>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-left">
+                    <h3>Refund Status</h3>
+                    <p>No refund started yet</p>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-left">
+                    <h3>Return Policy</h3>
+                    <p>View return policy details</p>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="bottom-nav">
+    <div class="nav-item">🏠<br>Home</div>
+    <div class="nav-item">📦<br>Orders</div>
+    <div class="nav-item active">↩<br>Returns</div>
+    <div class="nav-item">💬<br>Tickets</div>
+    <div class="nav-item">👤<br>Profile</div>
+</div>
+
+<script>
+// Display today's actual date automatically
+const today = new Date();
+
+const formattedDate = today.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+});
+
+document.getElementById('deliveryDate').innerText =
+    `Delivered on ${formattedDate}`;
+</script>
+
+</body>
+</html>
