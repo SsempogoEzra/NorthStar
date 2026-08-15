@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Returns & Refunds</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#0b1220;
+    color:#fff;
+}
+
+.container{
+    max-width:430px;
+    margin:auto;
+    min-height:100vh;
+    padding:20px;
+    padding-bottom:90px;
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.back-btn{
+    font-size:24px;
+    cursor:pointer;
+}
+
+.page-title{
+    font-size:28px;
+    font-weight:700;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-card {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    background: #141c2e;
+    color: #fff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: modalIn 0.2s ease-out;
+}
+
+.modal-card h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.modal-card p {
+    color: #a7b0c0;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #a7b0c0;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #fff;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card{
+    background:#141c2e;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.order-id{
+    font-size:24px;
+    font-weight:700;
+}
+
+.delivery-date{
+    margin-top:8px;
+    color:#a7b0c0;
+    font-size:15px;
+}
+
+.return-badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:8px 14px;
+    border-radius:8px;
+    background:#114d29;
+    color:#57ff95;
+    font-weight:600;
+    font-size:14px;
+}
+
+.menu{
+    margin-top:25px;
+}
+
+.menu-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.menu-item:last-child{
+    border-bottom:none;
+}
+
+.menu-left h3{
+    font-size:18px;
+    font-weight:600;
+}
+
+.menu-left p{
+    margin-top:4px;
+    color:#9da6b5;
+    font-size:14px;
+}
+
+.arrow{
+    font-size:22px;
+    color:#8d97a7;
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#101827;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-around;
+    padding:12px 0;
+}
+
+.nav-item{
+    text-align:center;
+    font-size:13px;
+    color:#9ca3af;
+}
+
+.nav-item.active{
+    color:#4f7cff;
+    font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+        <!-- Popup Modal -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose">&times;</button>
+
+            <h2 id="modalTitle"></h2>
+            <div id="modalMessage"></div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="header">
+            <span class="back-btn">←</span>
+            <h1 class="page-title">Returns & Refunds</h1>
+        </div>
+
+        <div class="card">
+
+            <div class="order-id">Order #NS12345</div>
+
+            <!-- Dynamic Date -->
+            <div class="delivery-date" id="deliveryDate"></div>
+
+            <div class="return-badge">
+                Eligible for Return
+            </div>
+
+            <div class="menu">
+
+                <div class="menu-item">
+                    <div class="menu-left">
+                        <h3>Request a Return</h3>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-left">
+                        <h3>Return Status</h3>
+                        <p>No active return</p>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-left">
+                        <h3>Refund Status</h3>
+                        <p>No refund started yet</p>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-left">
+                        <h3>Return Policy</h3>
+                        <p>View return policy details</p>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item">🏠<br>Home</div>
+        <div class="nav-item">📦<br>Orders</div>
+        <div class="nav-item active">↩<br>Returns</div>
+        <div class="nav-item">💬<br>Tickets</div>
+        <div class="nav-item">👤<br>Profile</div>
+    </div>
+
+    <script>
+
+        // ---------------- Delivery Date ----------------
+        const today = new Date();
+
+        const formattedDate = today.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        document.getElementById('deliveryDate').innerText =
+            `Delivered on ${formattedDate}`;
+
+
+        // ---------------- Back to Dashboard ----------------
+        document.querySelector('.back-btn').addEventListener('click', function () {
+            window.location.href = 'dashboard.html';
+        });
+
+
+        // ---------------- Popup Modal ----------------
+        const modal = document.getElementById('infoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalClose = document.getElementById('modalClose');
+
+        function showModal(title, message) {
+            modalTitle.textContent = title;
+            modalMessage.innerHTML = message;
+            modal.classList.add('show');
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+        }
+
+        modalClose.addEventListener('click', closeModal);
+
+
+        // Close when clicking outside the card
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+
+        // ---------------- Return Menu Actions ----------------
+        const menuItems = document.querySelectorAll('.menu-item');
+
+
+        // Request a Return
+        menuItems[0].addEventListener('click', function () {
+            showModal(
+                'Return Request',
+                `
+                <p>Your order <strong>#NS12345</strong> is eligible for return.</p>
+                <p>To request a return, please make sure the item is unused and in its original packaging.</p>
+                <p>A support agent will contact you to arrange the return.</p>
+                `
+            );
+        });
+
+
+        // Return Status
+        menuItems[1].addEventListener('click', function () {
+            showModal(
+                'Return Status',
+                `
+                <p><strong>Order:</strong> #NS12345</p>
+                <p><strong>Status:</strong> No active return</p>
+                <p>You have not submitted a return request for this order.</p>
+                `
+            );
+        });
+
+
+        // Refund Status
+        menuItems[2].addEventListener('click', function () {
+            showModal(
+                'Refund Status',
+                `
+                <p><strong>Order:</strong> #NS12345</p>
+                <p><strong>Status:</strong> No refund started yet</p>
+                <p>A refund will be processed once your returned item has been received and inspected.</p>
+                `
+            );
+        });
+
+
+        // Return Policy
+        menuItems[3].addEventListener('click', function () {
+            showModal(
+                'Northstar Return Policy',
+                `
+                <p>• Items can be returned within 30 days of delivery.</p>
+                <p>• Items must be unused and in their original packaging.</p>
+                <p>• Proof of purchase is required.</p>
+                <p>• Refunds are processed after the returned item is inspected.</p>
+                <p>• Some items may not be eligible for return.</p>
+                <p>For further assistance, please file a support ticket.</p>
+                `
+            );
+        });
+
+
+        // ---------------- Bottom Navigation ----------------
+        const navItems = document.querySelectorAll('.nav-item');
+
+        navItems[0].addEventListener('click', function () {
+            window.location.href = 'dashboard.html';
+        });
+
+        navItems[1].addEventListener('click', function () {
+            window.location.href = 'orders.html';
+        });
+
+        navItems[2].addEventListener('click', function () {
+            window.location.href = 'refund&return.html';
+        });
+
+        navItems[3].addEventListener('click', function () {
+            window.location.href = 'raise-ticket.html';
+        });
+
+        navItems[4].addEventListener('click', function () {
+            showModal(
+                'Profile',
+                '<p>Profile page coming soon.</p>'
+            );
+        });
+    </script>
+
+</body>
+</html>
