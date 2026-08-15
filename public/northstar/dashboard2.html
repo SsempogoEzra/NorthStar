@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard — Northstar Retail Co.</title>
+    <meta name="description" content="Placeholder dashboard for the Northstar Retail support deflection MVP." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <div class="card-brand">
+        <img src="logo.png" alt="Northstar Retail Co. logo" />
+        <span>Northstar Retail Co.</span>
+      </div>
+      <h1>You're logged in</h1>
+      <p class="subtitle">
+        Placeholder dashboard. Orders, returns, and support tools land here once the real
+        auth + data APIs are wired up.
+      </p>
+      <a class="btn" id="logout" href="index.html">Log out</a>
+      <footer>© 2026 Northstar Retail Co.</footer>
+    </main>
+    <script>
+      // Demo-only: clears the mock session flag set on the login page.
+      document.getElementById("logout").addEventListener("click", function () {
+        try { localStorage.removeItem("northstar_demo_session"); } catch (e) {}
+      });
+    </script>
+  </body>
+</html>

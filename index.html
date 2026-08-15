@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Log In — Northstar Retail Co. Support</title>
+    <meta
+      name="description"
+      content="Log in to Northstar Retail Co. to track orders, manage returns, and get customer support."
+    />
+    <meta property="og:title" content="Log In — Northstar Retail Co. Support" />
+    <meta property="og:description" content="Track orders, manage returns, and get support with Northstar Retail Co." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ============ Splash (click anywhere or Skip to dismiss) ============ -->
+    <div id="splash" role="button" tabindex="0" aria-label="Skip intro">
+      <img src="logo.png" alt="Northstar Retail Co. logo" />
+      <p class="wordmark">Northstar Retail Co.</p>
+      <button class="skip" type="button">Skip</button>
+    </div>
+
+    <!-- ============ Auth card ============ -->
+    <main class="card">
+      <div class="card-brand">
+        <img src="logo.png" alt="" aria-hidden="true" />
+        <span>Northstar Retail Co.</span>
+      </div>
+
+      <h1 id="card-heading">Welcome Back</h1>
+      <p class="subtitle" id="card-subtitle">Log in to track orders, manage returns, and get support.</p>
+
+      <!-- Login -->
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <div class="control">
+            <i class="fa-regular fa-envelope"></i>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+          </div>
+          <span class="error" id="email-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="control">
+            <i class="fa-solid fa-lock"></i>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              data-rule="password"
+              autocomplete="current-password"
+              placeholder="••••••••"
+            />
+            <button class="toggle-pw" type="button" data-target="password" aria-label="Show password" aria-pressed="false">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          <span class="error" id="password-error" role="alert"></span>
+        </div>
+
+        <p class="row-right"><a class="link" id="forgot" href="#">Forgot password?</a></p>
+
+        <button class="btn" type="submit">Log In</button>
+      </form>
+
+      <!-- Sign up -->
+      <form id="signup-form" novalidate hidden>
+        <div class="field">
+          <label for="signup-name">Full name</label>
+          <div class="control">
+            <i class="fa-regular fa-user"></i>
+            <input id="signup-name" type="text" data-rule="name" autocomplete="name" placeholder="Ada Njoroge" />
+          </div>
+          <span class="error" id="signup-name-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="signup-email">Email</label>
+          <div class="control">
+            <i class="fa-regular fa-envelope"></i>
+            <input id="signup-email" type="email" autocomplete="email" placeholder="you@example.com" />
+          </div>
+          <span class="error" id="signup-email-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="signup-password">Password</label>
+          <div class="control">
+            <i class="fa-solid fa-lock"></i>
+            <input
+              id="signup-password"
+              type="password"
+              data-rule="password"
+              autocomplete="new-password"
+              placeholder="At least 8 characters"
+            />
+            <button class="toggle-pw" type="button" data-target="signup-password" aria-label="Show password" aria-pressed="false">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          <span class="error" id="signup-password-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="signup-confirm">Confirm password</label>
+          <div class="control">
+            <i class="fa-solid fa-lock"></i>
+            <input
+              id="signup-confirm"
+              type="password"
+              data-rule="confirm"
+              autocomplete="new-password"
+              placeholder="Re-enter password"
+            />
+            <button class="toggle-pw" type="button" data-target="signup-confirm" aria-label="Show password" aria-pressed="false">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          <span class="error" id="signup-confirm-error" role="alert"></span>
+        </div>
+
+        <button class="btn" type="submit">Create Account</button>
+      </form>
+
+      <p class="switch" id="switch-wrap">
+        Don't have an account? <button type="button" data-mode="signup">Sign Up</button>
+      </p>
+
+      <footer>© 2026 Northstar Retail Co.</footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
